@@ -1,0 +1,20 @@
+# Configuration read by Travel Plan Viewer.
+version: 1
+
+# Visiting /OWNER/REPOSITORY displays this file.
+default_file: travel-plan.md
+
+# Optional friendly URL aliases. Paths are relative to this repository.
+pages:
+  travel-plan: travel-plan.md
+  # packing: notes/packing.md
+
+# Viewer-level visibility only. This does not hide files on public GitHub.
+access:
+  default: public
+  rules:
+    # Rules are evaluated top to bottom; the last match wins.
+    # - path: drafts/**
+    #   access: hidden
+    # - path: drafts/share-this.md
+    #   access: public
