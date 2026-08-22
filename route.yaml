@@ -1,7 +1,7 @@
-# Every viewer URL is explicit. Markdown filenames have no special meaning.
+# Every viewer URL is explicit. plaintrip.md is the recommended convention.
 version: 1
 
 routes:
-  /: travel-plan.md
-  /travel-plan: travel-plan.md
+  /: plaintrip.md
+  /plaintrip: plaintrip.md
   # /packing: notes/packing-list.md

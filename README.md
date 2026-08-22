@@ -6,15 +6,15 @@ A data-only [TripMD](https://github.com/cumuloworks/itinerary-md) itinerary for 
 
 1. On GitHub, choose **Use this template** → **Create a new repository**.
 2. Make the repository public. Private repositories are not supported yet.
-3. Edit [`travel-plan.md`](./travel-plan.md), or rename it and update [`route.yaml`](./route.yaml).
+3. Edit [`plaintrip.md`](./plaintrip.md), or rename it and update [`route.yaml`](./route.yaml).
 4. Commit and push your changes.
 5. Open `https://YOUR-VIEWER.example/YOUR-GITHUB-NAME/YOUR-REPOSITORY`.
 
-For example, a public repository named `yuitof/china-travel-2026` appears at both configured routes:
+For example, a public repository named `octocat/lisbon-weekend` appears at both configured routes:
 
 ```text
-https://YOUR-VIEWER.example/yuitof/china-travel-2026
-https://YOUR-VIEWER.example/yuitof/china-travel-2026/travel-plan
+https://YOUR-VIEWER.example/octocat/lisbon-weekend
+https://YOUR-VIEWER.example/octocat/lisbon-weekend/plaintrip
 ```
 
 The website fetches the latest committed Markdown. A GitHub update may take about a minute to appear because the viewer caches public files briefly.
@@ -25,19 +25,19 @@ The website fetches the latest committed Markdown. A GitHub update may take abou
 .
 ├── README.md
 ├── route.yaml       # viewer URLs mapped to source files
-└── travel-plan.md   # an example filename, not a required name
+└── plaintrip.md     # the conventional itinerary filename
 ```
 
-No itinerary filename is special. `route.yaml` is the complete routing table:
+`plaintrip.md` is the friendly default, but it is a convention rather than a hardcoded filename. `route.yaml` remains the complete routing table:
 
 ```yaml
 version: 1
 
 routes:
-  /: travel-plan.md
-  /travel-plan: travel-plan.md
+  /: plaintrip.md
+  /plaintrip: plaintrip.md
   /packing: notes/packing-list.md
-  /week-one: schedules/shanghai-and-wuhan.md
+  /food: notes/restaurants.md
 ```
 
 The left side is the URL below `/OWNER/REPOSITORY`; the right side is a Markdown path in this repository. You can map several URLs to one file. Unmapped URLs show the not-found page.
@@ -92,9 +92,9 @@ version: 1
 routes:
   /:
     repository: YOUR-ITINERARY-REPOSITORY
-    file: travel-plan.md
+    file: plaintrip.md
 ```
 
-For example, `yuitof/yuitof/route.yaml` can point to `yuitof/china-travel-2026/travel-plan.md`, making `/yuitof` the short home URL. Update `file` if your Markdown has a different name.
+For example, `octocat/octocat/route.yaml` can point to `octocat/lisbon-weekend/plaintrip.md`, making `/octocat` the short home URL. Update `file` if your Markdown has a different name.
 
 Routing does not hide data. Every file in this public repository remains readable on GitHub and through GitHub's raw-file URL. Never commit passport details, booking codes, home addresses, API keys, or other secrets.
