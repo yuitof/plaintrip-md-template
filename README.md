@@ -1,6 +1,6 @@
-# Travel Plan Template
+# PlainTrip MD itinerary template
 
-A data-only itinerary for [Travel Plan Viewer](https://github.com/yuitof/travel-plan). Edit Markdown, push to GitHub, and keep sharing the same viewer URL. There is no app to install or deploy in this repository.
+A data-only [TripMD](https://github.com/cumuloworks/itinerary-md) itinerary for [PlainTrip MD](https://github.com/yuitof/plaintrip-md). Edit Markdown, push to GitHub, and keep sharing the same viewer URL. There is no app to install or deploy in this repository.
 
 ## Make this yours
 
@@ -42,31 +42,32 @@ routes:
 
 The left side is the URL below `/OWNER/REPOSITORY`; the right side is a Markdown path in this repository. You can map several URLs to one file. Unmapped URLs show the not-found page.
 
-## Markdown shape
+## TripMD syntax
 
-The included itinerary is a complete example. Keep these section names and the four itinerary columns if you want every part of the viewer to render:
+The included itinerary is a complete example. Add `type: tripmd`, use dated `##` headings, and write events as blockquotes:
 
 ```md
 ---
+type: tripmd
 title: My trip
 description: A short sentence friends will see below the title.
-route: Tokyo → Kyoto → Osaka
-budget: 100,000 JPY
-updated: 2026-08-22
+tags: [Japan, Friends]
+budget: 100000 JPY
+currency: JPY
+timezone: Asia/Tokyo
 ---
 
 ## Before you go
 
 - [ ] Reserve a hotel
 
-## Itinerary
+## 2027-08-01 @Asia/Tokyo
 
-### Saturday 1 August · Tokyo → Kyoto
-`2026-08-01` · Japan Standard Time
-
-| Time | Plan | Details | Status |
-| --- | --- | --- | --- |
-| 09:00–11:15 | Train to Kyoto | Window seats | Booked |
+> [09:00] - [11:15] train Shinkansen :: Tokyo - Kyoto
+>
+> - seat: Window
+> - price: 13970 JPY
+> - status: Booked
 
 ## Ideas to discuss
 
@@ -79,7 +80,7 @@ updated: 2026-08-22
 - Times are local.
 ```
 
-Available statuses are `Booked`, `Planned`, `Flexible`, `Confirm`, `Decide`, and `Idea`. Separate route stops with `→`, and use an en dash in ranges such as `09:00–11:15`.
+Times can also be `[am]`, `[pm]`, `[]`, or next-day values such as `[06:30+1]`. Use `:: Place` for one location and `:: From - To` for a journey. Metadata entries such as `price`, `status`, `seat`, and `details` appear below the event. Normal Markdown, task lists, tables, and `[!NOTE]`-style alerts work alongside the itinerary.
 
 ## Optional owner home
 
