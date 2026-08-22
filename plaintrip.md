@@ -1,106 +1,283 @@
 ---
 type: tripmd
-title: Lisbon long weekend
-description: A fictional example itinerary. Clone the repository and replace these details with your own trip.
+title: Welcome to PlainTrip MD
+description: A fictional itinerary and compact reference for writing a shareable trip in Markdown.
 tags:
-  - Example
-  - Weekend
-  - Friends
+  - Introduction
+  - Sample
+  - Lisbon
 budget: 450 EUR
 currency: EUR
 timezone: Europe/Lisbon
 updated: 2027-02-01
 ---
 
-## Before you go
+## What is PlainTrip MD?
 
-- [ ] Replace the example title, dates, timezone, and budget.
-- [ ] Add real reservations without publishing confirmation codes or passport details.
-- [ ] Share the PlainTrip URL with the group.
+PlainTrip MD turns a small Markdown file into a calm, read-only itinerary that can be shared at one stable URL.
+
+- **Arrange transport, stays, meals, and activities** on one timeline.
+- **Keep local times understandable** when a trip crosses timezones.
+- **Track an estimated budget** from event prices.
+- **Edit with ordinary tools** and publish by pushing to a public GitHub repository.
+
+# Example itinerary
+
+Everything below is fictional. Replace it with your own dates, places, and plans.
 
 ## 2027-05-14 @Europe/Lisbon
 
 > [10:15] flight Morning arrival :: Home airport - Lisbon Airport^LIS
 >
 > - price: 180 EUR
-> - status: Example
+> - class: Economy
+> - note: Keep the first afternoon light
 
-> [11:30] - [12:15] train Metro into town :: Lisbon Airport - Baixa
+> [11:30] - [12:15] subway Red Line :: Lisbon Airport - Alameda
 >
 > - price: 2 EUR
-> - details: Buy a transit card at the station
-> - status: Planned
+> - duration: 30 minutes
 
-> [13:00] lunch First meal together :: Baixa, Lisbon
+> [12:30] train Green Line :: Alameda - Baixa-Chiado
 >
-> - details: Pick somewhere when everyone has arrived
-> - status: Flexible
+> - price: 2 EUR
 
-> [15:00] hotel Guesthouse check-in :: Baixa, Lisbon
+> [!CAUTION] Example information only
 >
+> Confirm real transport times and entry requirements with official sources.
+
+> [15:00] hotel Guesthouse check-in :: [Example Guesthouse](https://example.com/stay)
+>
+> - check-in: 15:00
+> - check-out: 11:00
 > - price: {24*2} EUR
-> - status: Booked
+> - wifi: Available
 
-> [pm] sightseeing Riverside walk :: Praça do Comércio - Cais do Sodré
+> [20:00] dinner First meal together :: Baixa, Lisbon
 >
-> - details: Keep the first afternoon relaxed
-> - status: Idea
+> - price: 30 EUR
+> - note: Choose the restaurant after everyone arrives
 
 ## 2027-05-15 @Europe/Lisbon
 
-> [am] breakfast Coffee and pastries :: Alfama, Lisbon
->
-> - status: Flexible
-
-> [10:30] - [13:00] sightseeing Tram and viewpoints :: Alfama, Lisbon
->
-> - price: {12*2} EUR
-> - details: Walk part of the route if the tram is crowded
-> - status: Planned
-
-> [13:30] lunch Market lunch :: Time Out Market Lisboa
->
-> - status: Idea
-
-> [pm] museum Choose one museum
->
-> - details: Decide as a group based on the weather
-> - status: Decide
-
 > [!TIP] Leave breathing room
 >
-> One good neighbourhood and an unhurried meal can be better than crossing the city for every attraction.
+> One neighbourhood and an unhurried lunch may be better than crossing the city for every attraction.
 
-## 2027-05-16 @Europe/Lisbon
-
-> [am] cafe Slow final morning :: Chiado, Lisbon
+> [09:00] breakfast Pastries and coffee :: Alfama, Lisbon
 >
-> - details: Check out first and leave bags at the guesthouse
-> - status: Planned
+> - price: 8 EUR
 
-> [11:00] activity Choose a final stop
+> [10:30] - [13:00] sightseeing Viewpoints and old streets :: Alfama, Lisbon
 >
-> - details: A bookshop, a park, or more time over lunch
-> - status: Flexible
+> - price: {12*2} EUR
+> - note: Walk part of the route if transit is crowded
 
-> [15:00] - [15:45] train Metro to the airport :: Baixa - Lisbon Airport
+> [13:30] lunch Market lunch :: [Example Market](https://example.com/market)
 >
-> - price: 2 EUR
-> - status: Planned
+> - price: 20 EUR
 
-> [18:00] flight Return flight :: Lisbon Airport^LIS - Home airport
+> [15:00] - [17:00] museum Choose one museum
 >
-> - price: 180 EUR
-> - status: Example
+> - price: 15 EUR
+> - reservation: Decide with the group
 
-## Ideas to discuss
+> [pm] walk Riverside stroll :: Praça do Comércio - Cais do Sodré
 
-- Which activities matter to everyone?
-- What should be booked, and what should stay flexible?
-- Does anyone need accessibility, dietary, or quiet-time accommodations?
+---
 
-## Practical notes
+# Syntax reference
 
-- Every person, place, time, and price above is illustrative.
-- Times are shown in the timezone declared on each date heading.
-- Public repositories are not suitable for secrets or sensitive travel documents.
+The title, locations, and metadata values may contain normal inline Markdown such as **emphasis**, `code`, and [links](https://example.com).
+
+## 1. Event lines
+
+Write an event inside a Markdown blockquote:
+
+```markdown
+> [time] event-type Optional title :: Place or route
+>
+> - detail: value
+```
+
+The title and destination are optional. Metadata lines belong to the event above them.
+
+## 2. Event types
+
+The event type selects its timeline icon and broad category.
+
+### Transportation
+
+```markdown
+> [10:00] flight Morning flight :: Airport A - Airport B
+> [11:00] train Intercity train :: Central Station - Coast Station
+> [12:00] bus Airport bus :: Airport - Hotel
+> [13:00] taxi Ride to dinner :: Hotel - Restaurant
+> [14:00] subway Metro transfer :: Station A - Station B
+> [15:00] ferry Island crossing :: Main Port - Island Port
+> [16:00] drive Rental-car loop
+> [17:00] cablecar Ride to the summit
+```
+
+### Accommodation
+
+```markdown
+> [15:00] hotel City hotel
+> [18:00] ryokan Hot-spring inn
+> [14:00] hostel Youth hostel
+> [16:00] dormitory Shared guesthouse
+> [15:00] stay Friend's home
+```
+
+### Activities
+
+Any other word can be an activity type:
+
+```markdown
+> [09:00] breakfast Hotel breakfast
+> [10:00] museum Design museum
+> [12:30] lunch Market lunch
+> [14:00] sightseeing Old town walk
+> [16:00] cafe Coffee break
+> [18:00] shopping Local shops
+> [20:00] dinner Group dinner
+```
+
+## 3. Times
+
+### Exact times
+
+```markdown
+> [09:00] breakfast Morning coffee
+> [09:00@Asia/Tokyo] meeting Call in Tokyo time
+> [09:00] - [11:30] activity Guided walk
+> [06:30+1] arrival Overnight arrival
+```
+
+### Approximate times
+
+```markdown
+> [am] activity Morning plan
+> [pm] cafe Afternoon break
+> [] sightseeing Time not decided
+```
+
+## 4. Dates and timezones
+
+Begin an itinerary day with an ISO date. A timezone on the heading applies to the events below it:
+
+```markdown
+## 2027-05-14 @Europe/Lisbon
+```
+
+An event-level timezone overrides the date heading, and the frontmatter timezone is the document-wide fallback.
+
+## 5. Locations and routes
+
+Use `::` for a destination. Put spaces around the dash in a journey:
+
+```markdown
+> [10:00] museum Morning visit :: Design Museum
+> [12:00] train Coast service :: Central Station - Coast Station
+```
+
+The alternative `from ... to ...` form is also supported:
+
+```markdown
+> [12:00] train Coast service from Central Station to Coast Station
+```
+
+Append an alternate label with `^`, such as `Lisbon Airport^LIS`.
+
+## 6. Event metadata
+
+Metadata uses `key: value` list items inside the same blockquote.
+
+### Prices
+
+```markdown
+> - price: 100 EUR
+> - cost: 15000 JPY
+```
+
+`price` and `cost` contribute to the budget summary. Arithmetic such as `{25*4} EUR` is evaluated using numbers and arithmetic operators only.
+
+### Transportation details
+
+```markdown
+> - class: Economy
+> - seat: 12A
+> - duration: 2h 30m
+> - platform: 5
+> - gate: 42
+```
+
+### Stay details
+
+```markdown
+> - check-in: 15:00
+> - check-out: 11:00
+> - room: Twin room
+> - wifi: Available
+> - breakfast: Included
+```
+
+### Notes and bookings
+
+```markdown
+> - reservation: Required
+> - url: https://example.com
+> - note: Move indoors if it rains
+> - menu: Set menu
+> - phone: +00 000 000 000
+```
+
+Custom metadata keys are welcome too.
+
+## 7. Alerts
+
+PlainTrip MD supports the five GitHub-style alert variants:
+
+> [!NOTE] Note
+>
+> Add helpful context without making it an event.
+
+> [!TIP] Tip
+>
+> Offer an optional shortcut or suggestion.
+
+> [!IMPORTANT] Important
+>
+> Highlight something the group should remember.
+
+> [!WARNING] Warning
+>
+> Call attention to a likely disruption.
+
+> [!CAUTION] Caution
+>
+> Reserve this for information requiring extra care.
+
+## 8. Frontmatter
+
+The YAML block at the top controls the document heading and defaults:
+
+```yaml
+---
+type: tripmd
+title: My trip
+description: One sentence for the people opening the link.
+tags: [Weekend, Friends]
+budget: 500 EUR
+currency: EUR
+timezone: Europe/Lisbon
+---
+```
+
+Keep `type: tripmd` to enable itinerary parsing. `currency` and `timezone` provide fallbacks when an event does not specify its own values.
+
+---
+
+# About this template
+
+PlainTrip MD uses the open-source itinerary and alert parsers from [TripMD / itinerary-md](https://github.com/cumuloworks/itinerary-md). The viewer is read-only: edit `plaintrip.md` on GitHub, then refresh the same shared URL.
