@@ -44,7 +44,7 @@ The left side is the URL below `/OWNER/REPOSITORY`; the right side is a Markdown
 
 ## TripMD syntax
 
-The included itinerary is a complete example. Add `type: tripmd`, use dated `##` headings, and write events as blockquotes:
+The included itinerary follows the upstream TripMD Studio starter's learning flow: a welcome, a fictional itinerary, and a compact syntax reference. Its PlainTrip wording and example details are independently written. Add `type: tripmd`, use dated `##` headings, and write events as blockquotes:
 
 ```md
 ---
