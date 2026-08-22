@@ -1,0 +1,7 @@
+# Every viewer URL is explicit. Markdown filenames have no special meaning.
+version: 1
+
+routes:
+  /: travel-plan.md
+  /travel-plan: travel-plan.md
+  # /packing: notes/packing-list.md

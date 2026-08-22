@@ -6,14 +6,15 @@ A data-only itinerary for [Travel Plan Viewer](https://github.com/yuitof/travel-
 
 1. On GitHub, choose **Use this template** → **Create a new repository**.
 2. Make the repository public. Private repositories are not supported yet.
-3. Edit [`travel-plan.md`](./travel-plan.md). Replace the example trip rather than renaming the file.
+3. Edit [`travel-plan.md`](./travel-plan.md), or rename it and update [`route.yaml`](./route.yaml).
 4. Commit and push your changes.
 5. Open `https://YOUR-VIEWER.example/YOUR-GITHUB-NAME/YOUR-REPOSITORY`.
 
-For example, a public repository named `yuitof/china-travel-2026` appears at:
+For example, a public repository named `yuitof/china-travel-2026` appears at both configured routes:
 
 ```text
 https://YOUR-VIEWER.example/yuitof/china-travel-2026
+https://YOUR-VIEWER.example/yuitof/china-travel-2026/travel-plan
 ```
 
 The website fetches the latest committed Markdown. A GitHub update may take about a minute to appear because the viewer caches public files briefly.
@@ -23,18 +24,23 @@ The website fetches the latest committed Markdown. A GitHub update may take abou
 ```text
 .
 ├── README.md
-├── travel-plan.md       # the default itinerary
-└── travel-plan.yml      # default page, aliases, and viewer access rules
+├── route.yaml       # viewer URLs mapped to source files
+└── travel-plan.md   # an example filename, not a required name
 ```
 
-You may add more Markdown anywhere in the repository:
+No itinerary filename is special. `route.yaml` is the complete routing table:
 
-```text
-notes/packing.md
-weekends/kyoto/travel-plan.md
+```yaml
+version: 1
+
+routes:
+  /: travel-plan.md
+  /travel-plan: travel-plan.md
+  /packing: notes/packing-list.md
+  /week-one: schedules/shanghai-and-wuhan.md
 ```
 
-Those files become `/OWNER/REPOSITORY/notes/packing` and `/OWNER/REPOSITORY/weekends/kyoto`. An extensionless folder route also tries the configured default filename inside that folder.
+The left side is the URL below `/OWNER/REPOSITORY`; the right side is a Markdown path in this repository. You can map several URLs to one file. Unmapped URLs show the not-found page.
 
 ## Markdown shape
 
@@ -75,30 +81,19 @@ updated: 2026-08-22
 
 Available statuses are `Booked`, `Planned`, `Flexible`, `Confirm`, `Decide`, and `Idea`. Separate route stops with `→`, and use an en dash in ranges such as `09:00–11:15`.
 
-## Change URLs and access
+## Optional owner home
 
-Edit [`travel-plan.yml`](./travel-plan.yml):
+To make `/YOUR-GITHUB-NAME` show this plan, create the public GitHub profile repository `YOUR-GITHUB-NAME/YOUR-GITHUB-NAME`. Put this `route.yaml` in it:
 
 ```yaml
 version: 1
-default_file: travel-plan.md
 
-pages:
-  packing: notes/packing.md
-
-access:
-  default: public
-  rules:
-    - path: drafts/**
-      access: hidden
-    - path: drafts/share-this.md
-      access: public
+routes:
+  /:
+    repository: YOUR-ITINERARY-REPOSITORY
+    file: travel-plan.md
 ```
 
-- `default_file` is shown at `/OWNER/REPOSITORY`.
-- `pages` maps a friendly URL to a Markdown file.
-- access patterns support `*`, `**`, and `?`.
-- rules run top to bottom; the last matching rule wins.
-- `hidden` makes the viewer return a not-found page.
+For example, `yuitof/yuitof/route.yaml` can point to `yuitof/china-travel-2026/travel-plan.md`, making `/yuitof` the short home URL. Update `file` if your Markdown has a different name.
 
-Viewer access rules are not secrecy. Because this repository is public, hidden Markdown remains readable on GitHub and through GitHub's raw-file URL. Never commit passport details, booking codes, home addresses, API keys, or other secrets.
+Routing does not hide data. Every file in this public repository remains readable on GitHub and through GitHub's raw-file URL. Never commit passport details, booking codes, home addresses, API keys, or other secrets.
