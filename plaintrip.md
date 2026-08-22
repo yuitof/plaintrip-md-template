@@ -14,6 +14,10 @@ updated: 2027-02-01
 
 ## What is PlainTrip MD?
 
+> [!NOTE] Project origin
+>
+> PlainTrip MD is a fork of [TripMD](https://github.com/cumuloworks/itinerary-md), created by [Cumuloworks](https://github.com/cumuloworks).
+
 PlainTrip MD turns a small Markdown file into a calm, read-only itinerary that can be shared at one stable URL.
 
 - **Arrange transport, stays, meals, and activities** on one timeline.
